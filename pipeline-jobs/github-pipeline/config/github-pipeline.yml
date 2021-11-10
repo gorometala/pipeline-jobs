@@ -1,0 +1,15 @@
+#Commnent section
+- job:
+    name: github-pipeline
+    project-type: pipeline
+    defaults: global
+    pipeline-scm:
+      script-path: "Jenkinsfile"
+      scm:
+        - git:
+            url: "https://github.com/alfredodeza/static.git"
+            clean: true
+
+    triggers:
+      - pollscm:
+          cron: "H/2 * * * *"
